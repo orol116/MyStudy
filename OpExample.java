@@ -178,4 +178,69 @@ public class OpExample {    // 예제 코드 작성용 클래스
 
         System.out.printf("%은/는 1미만 또는 100초과 정수인가? : %b / %b\n", input, result2, result3);
     }
+    
+     public void ex7() {
+
+        // 복합 대입 연산자 : +=, -=, *=, /= , %=
+        // -> 피연산자가 자신과 연산 후 결과를 다시 자신에게 대입
+
+        int a = 10;
+
+        // a를 1 증가
+        a++;    // a = a + 1, a += 1
+        System.out.println("a를 1 증가 : " + a);   // 11
+
+        // a를 4 증가
+        a += 4;
+        System.out.println("a를 4 증가 : " + a);    // 15
+
+        // a를 10 감소
+        a -= 10;
+        System.out.println("a를 10 감소 : " + a);   // 5
+
+        // a를 3배 증가
+        a *= 3;     // 15
+
+        // a를 6으로 나눴을 때 몫
+        a /= 6;     // 2
+
+        // a를 2로 나눈 나머지
+        a %= 2;     // 0
+    }
+
+    public void ex8() {
+        // 삼항 연산자 : 조건식 ? 식1 : 식2
+        // - 조건식의 결과가 true이면 식1, false이면 식2를 수행하는 연산자
+        // * 조건식 : 연산 결과가 true / false인 식
+        //           (비교, 논리, 논리 부정 연산이 포함)
+
+        int num = 30;
+        // num이 30보다 크면(초과) : "num은 30보다 큰 수이다."
+        // 아니면                 : "num은 30이하의 수이다."
+
+        String str1 = "num은 30보다 큰 수이다.";
+        String str2 = "num은 30이하의 수이다.";
+
+        String result = num > 30 ? str1 : str2;
+                        // 조건식 ? 식1  : 식2;
+                        //          t     f
+
+        // num값이 30을 초과하면 str1
+        // num값이 30을 초과하지 못하면 str2를 result 변수에 저장
+        System.out.println(result);
+
+        // 입력 받은 정수가 음수인지 양수인지 구분
+        // 단, 0은 양수로 처리
+
+        // ex)
+        // 정수 입력 : 4
+        // 양수 입니다.
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("정수 입력 : ");
+        int input = sc.nextInt();
+
+        String str3 = input >= 0 ? "양수 입니다." : "음수 입니다.";
+        System.out.println(str3);
+   }
 }
