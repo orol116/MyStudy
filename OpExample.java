@@ -144,4 +144,38 @@ public class OpExample {    // 예제 코드 작성용 클래스
         // c는 10을 초과하거나 짝수인가?
         System.out.println(c > 10 || c % 2 == 0);
     }
+    
+    public void ex6() {
+
+        // 논리 부정 연산자 : !
+        // -> 논리 값을 반대로 바꾸는 연산자
+
+        boolean bool1 = true;
+        boolean bool2 = !bool1;     // false
+
+        System.out.println("bool1 = " + bool1);     // true
+        System.out.println("bool2 = " + bool2);     // false
+
+        System.out.println("-------------------");
+
+        Scanner sc = new Scanner(System.in);
+
+        // 정수를 하나 입력 받았을 때
+        // 1) 해당 정수가 1부터 100 사이 값이 맞는지 확인 (1이상 100이하)
+        // 2) (반대) 1부터 100사이 값이 아닌지 확인
+
+        System.out.print("정수 입력 : ");
+        int input = sc.nextInt();
+
+        // 1 <= input <= 100
+        boolean result1 = (1 <= input) && (input<= 100);
+
+        System.out.printf("%d는 1이상, 100이하의 정수인가? : %b\n", input, result1);
+
+        // 1미만 또는 100초과
+        boolean result2 = (input < 1) || (input > 100);
+        boolean result3 = !((1 <= input) && (input<= 100));
+
+        System.out.printf("%은/는 1미만 또는 100초과 정수인가? : %b / %b\n", input, result2, result3);
+    }
 }
