@@ -1,9 +1,10 @@
 package edu.kh.oop.cls.model.service;
 
 import edu.kh.oop.cls.model.vo.Student;
+import edu.kh.oop.cls.model.vo.User;
 // import edu.kh.oop.cls.model.vo.TestVO;
 
-public class ClsService extends Student{
+public class ClsService /*extends Student*/{
                         // 부모 Student를 상속 받음
     public void ex1() {
 
@@ -24,8 +25,8 @@ public class ClsService extends Student{
         // System.out.println(std.v4);
 
         // 상속 관계에서 직접 접근 가능
-        System.out.println(v1);
-        System.out.println(v2); // protected 직접 접근 가능
+        // System.out.println(v1);
+        // System.out.println(v2); // protected 직접 접근 가능
         // System.out.println(v3);
         // System.out.println(v4);
     }
@@ -76,5 +77,81 @@ public class ClsService extends Student{
          *
          * 2) 사용 방법 : 클래스명.변수명
          */
+    }
+
+    public void ex3() {
+        // 생성자 확인 테스트
+
+        // Student 객체를 기본 생성자를 이용해 생성하고 이를 참조하는 참조변수 s1에 대입
+        Student s1 = new Student();
+                      // 기본 생성자
+
+        // User 기본 생성자를 이용해서 객체 생성
+        User u1 = new User();
+
+        // User 객체 필드 초기화 확인
+        System.out.println(u1.getUserId());
+        System.out.println(u1.getUserPw());
+        System.out.println(u1.getUserName());
+        System.out.println(u1.getUserAge());
+        System.out.println(u1.getUserGender());
+
+        // User 기본 생성자를 이용해서 객체 생성
+        User u2 = new User();
+
+        System.out.println(u2.getUserId());
+        System.out.println(u2.getUserPw());
+        System.out.println(u2.getUserName());
+        System.out.println(u2.getUserAge());
+        System.out.println(u2.getUserGender());
+
+        // 문제점 : u1이 참조하고 있는 User 객체와
+        //         u2가 참조하고 있는 User 객체의 필드 값이 모두 동일
+        //         why? 같은 기본 생성자로 User 객체를 생성했기 때문에
+
+        System.out.println("---------------------------------------");
+        // 해결 방법 1 : setter를 이용해서 새로운 값을 대입
+
+        u2.setUserId("asdf1234");
+        u2.setUserPw("1q2w3e4r");
+        u2.setUserName("김영희");
+        u2.setUserAge(19);
+        u2.setUserGender('여');
+
+        System.out.println(u2.getUserId());
+        System.out.println(u2.getUserPw());
+        System.out.println(u2.getUserName());
+        System.out.println(u2.getUserAge());
+        System.out.println(u2.getUserGender());
+
+        // 해결 방법 2 : 매개 변수 생성자를 이용해서
+        //              객체가 생성될 때부터 다른 값으로 필드를 초기화
+
+        User u3 = new User("test3", "pass333"); // 매개변수 생성자
+                        // 생성자 수행 시 전달할 값을 작성(순서 꼭 지켜야됌!)
+
+                        // 생성된 User 객체의 필드에 "test3", "pass333"이 초기화됌
+        System.out.println(u3.getUserId());
+        System.out.println(u3.getUserPw());
+    }
+
+    public void ex4() { // 매개변수 생성자 예제
+        User u1 = new User(); // 기본 생성자
+        User u2 = new User("user02", "pass02"); // 매개변수 2개 생성자
+        User u3 = new User("user03", "pass03", "김용기", 24, '남'); // 매개변수 5개 생성자
+        User u4 = new User("user04", "pass04", "타이레놀", 30, '여');
+        User u5 = new User("user05", "pass05", "펜잘", 29, '남');
+
+        System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+                u1.getUserId(), u1.getUserPw(), u1.getUserName(), u1.getUserAge(), u1.getUserGender());
+        System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+                u2.getUserId(), u2.getUserPw(), u2.getUserName(), u2.getUserAge(), u2.getUserGender());
+        System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+                u3.getUserId(), u3.getUserPw(), u3.getUserName(), u3.getUserAge(), u3.getUserGender());
+        System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+                u4.getUserId(), u4.getUserPw(), u4.getUserName(), u4.getUserAge(), u4.getUserGender());
+        System.out.printf("u1 : %s / %s / %s / %d / %c\n",
+                u5.getUserId(), u5.getUserPw(), u5.getUserName(), u5.getUserAge(), u5.getUserGender());
+
     }
 }

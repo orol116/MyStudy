@@ -7,6 +7,6 @@ public class ClsRun {
 
         ClsService service = new ClsService();
 
-        service.ex2(); // static 확인 예제 호출
+        service.ex4();
     }
 }
