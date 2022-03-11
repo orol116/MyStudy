@@ -41,10 +41,14 @@ public class Member {
     }
 
     public String getMemberName() {
+               // get + 필드명
         return memberName;
     }
 
+    // 매개변수로 전달 받은 값을 memberName 필드에 대입
+    // (매개변수 == 전달 받은 값을 지니고 있는 변수)
     public void setMemberName(String memberName) {
+                                // set + 필드명
         this.memberName = memberName;
     }
 
