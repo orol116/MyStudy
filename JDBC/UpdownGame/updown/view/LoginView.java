@@ -100,9 +100,17 @@ public class LoginView {
 
 		if (members.isEmpty()) System.out.println("조회 결과가 없습니다.");
 		else {
-			for (Member member : members)
+			for (Member member : members) {
+				if (member.getHighScore() == 0) continue;
 				System.out.printf("회원이름 : %s     최고 점수 : %d\n",
 						member.getMemberName(), member.getHighScore());
+			}
+			for (Member member : members) {
+				if (member.getHighScore() == 0) {
+					System.out.printf("회원이름 : %s     최고 점수 : %d\n",
+							member.getMemberName(), member.getHighScore());
+				}
+			}
 		}
 
 	}

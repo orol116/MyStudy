@@ -13,6 +13,7 @@ public class MainService {
 	 */
 	public int duplicateCheck(String memberId) {
 		int result = dao.duplicateCheck(memberId);
+
 		return result;
 	}
 
@@ -22,6 +23,7 @@ public class MainService {
 	 */
 	public int signUp(Member mem) {
 		int result = dao.signUp(mem);
+
 		return result;
 	}
 
@@ -31,6 +33,7 @@ public class MainService {
 	 */
 	public Member login(Member mem) {
 		Member loginMember = dao.login(mem);
+
 		return loginMember;
 	}
 
