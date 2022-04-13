@@ -30,10 +30,10 @@ public class CreateXML {
         Properties prop = new Properties();
 
         try {
-            FileOutputStream fos = new FileOutputStream("member-sql.xml");
+            FileOutputStream fos = new FileOutputStream("board-sql.xml");
                                                         // 파일 이름
 
-            prop.storeToXML(fos,   "Member Service SQL"); // xml 파일 생성
+            prop.storeToXML(fos,   "Board Service SQL"); // xml 파일 생성
         } catch (IOException e) {
             e.printStackTrace();
         }
