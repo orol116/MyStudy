@@ -1,5 +1,6 @@
 package edu.kh.jdbc.main.view;
 
+import edu.kh.jdbc.board.view.BoardView;
 import edu.kh.jdbc.member.model.vo.Member;
 import edu.kh.jdbc.member.view.MemberView;
 
@@ -15,6 +16,9 @@ public class MainView { // 메인 메뉴(메뉴 선택용/입력 화면)
 
     // 회원 관련 기능 화면을 모아둔 객체를 참조할 변수
     private MemberView memberView = new MemberView();
+
+    // 게시판 관련 기능 화면을 모아둔 객체를 참조할 변수
+    private BoardView boardView = new BoardView();
 
 
     /**
@@ -69,6 +73,9 @@ public class MainView { // 메인 메뉴(메뉴 선택용/입력 화면)
                     System.out.println("3. 내 정보 수정(이름, 성별)");
                     System.out.println("4. 비밀번호 변경");
                     System.out.println("5. 회원 탈퇴");
+
+                    System.out.println("6. * 게시판 메뉴 화면 *");
+
                     System.out.println("9. 로그아웃");
                     System.out.print("메뉴를 선택해주세요 >> ");
                     menuNum = sc.nextInt();
@@ -84,6 +91,7 @@ public class MainView { // 메인 메뉴(메뉴 선택용/입력 화면)
                             int result = memberView.secession(loginMember);
                             if (result > 0) loginMember = null;
                             break;
+                        case 6: boardView.boardMenu(loginMember); break;
                         case 9: loginMember = null; break;
                         default: System.out.print("메뉴에 작성된 번호를 입력해주세요.");
                     }

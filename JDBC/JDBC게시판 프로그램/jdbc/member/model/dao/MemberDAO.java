@@ -87,7 +87,7 @@ public class MemberDAO {
      * @return result
      * @throws Exception
      */
-    public int signUp(Connection conn, Member sighUpMember) throws Exception {
+    public int  signUp(Connection conn, Member sighUpMember) throws Exception {
 
         int result = 0; // 결과 저장용 변수
 
