@@ -342,4 +342,70 @@ public class BoardDAO {
 
         return result;
     }
+
+    public int insertBoard(Connection conn, Board board) throws Exception {
+
+        int result = 0;
+
+        try {
+
+            String sql = prop.getProperty("insertBoard");
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, board.getBoardTitle());
+            pstmt.setString(2, board.getBoardContent());
+            pstmt.setInt(3, board.getReadCount());
+            pstmt.setInt(4, board.getMemberNo());
+
+            result = pstmt.executeUpdate();
+
+        } finally {
+            close(pstmt);
+        }
+
+        return result;
+    }
+
+    public List<Board> searchBoard(Connection conn, int menuNum, String keyword) throws Exception {
+
+        List<Board> boardList = new ArrayList<>();
+
+        try {
+
+            String sql = prop.getProperty("searchBoard1")
+                       + prop.getProperty("condition" + menuNum)
+                       + prop.getProperty("searchBoard2");
+
+            pstmt = conn.prepareStatement(sql);
+
+            // 위치 홀더에 알맞은 값 세팅
+            // * 주의 *
+            // -> 제목 + 내용을 검색하는 조건(3번은) 혼자만 위치 홀더가 2개이다!!
+            pstmt.setString(1, keyword);
+            if (menuNum == 3) pstmt.setString(2, keyword);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+
+                int boardNo = rs.getInt("BOARD_NO");
+                String boardTitle = rs.getString("BOARD_TITLE");
+                Date createDate = rs.getDate("CREATE_DATE");
+                int readCount = rs.getInt("READ_COUNT");
+                String memberName = rs.getString("MEMBER_NM");
+                int replyCount = rs.getInt("REPLY_COUNT");
+
+                Board board = new Board(boardNo, boardTitle, createDate, readCount, memberName, replyCount);
+
+                boardList.add(board);
+            }
+
+        } finally {
+            close(rs);
+            close(pstmt);
+        }
+
+        return boardList;
+    }
 }

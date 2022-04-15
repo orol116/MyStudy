@@ -55,8 +55,10 @@ public class BoardView {
                         selectOne(loginMember);
                         break;
                     case 3:
+                        insertBoard(loginMember.getMemberNo());
                         break;
                     case 4:
+                        searchBoard();
                         break;
                     case 0:
                         System.out.println("회원 메뉴로 돌아갑니다.");
@@ -161,7 +163,7 @@ public class BoardView {
                         insertReply(loginMember, boardNo);
                         break;
                     case 2: case 3:
-                        String tmp = menuNum == 2 ? "\n[댓글 수정]\n" : "\n[댓글 삭제]\n";
+                        String tmp = menuNum == 2 ? "\n[댓글 수정]\n" : "\n[    댓글 삭제]\n";
                         System.out.println(tmp);
 
                         System.out.print("댓글 번호 입력 : ");
@@ -348,6 +350,9 @@ public class BoardView {
      *    -> 차이점은 동기/비동기 차이밖에 없음
      */
 
+    /** 내용 입력 메서드
+     * @return
+     */
     private String inputContent() {
 
         // String boardContent = "";
@@ -375,6 +380,10 @@ public class BoardView {
         return String.valueOf(boardContent);
     }
 
+    /** 댓글 삽입 메서드
+     * @param loginMember
+     * @param boardNo
+     */
     private void insertReply(Member loginMember, int boardNo) {
         System.out.println("[댓글 작성]");
 
@@ -397,7 +406,9 @@ public class BoardView {
         }
     }
 
-
+    /** 댓글 수정 메서드
+     * @param inputNo
+     */
     private void updateReply(int inputNo) {
 
         System.out.println("수정할 내용 입력(종료 시 @exit 입력)");
@@ -421,6 +432,9 @@ public class BoardView {
         }
     }
 
+    /** 댓글 삭제 메서드
+     * @param inputNo
+     */
     private void deleteReply(int inputNo) {
 
         char ch;
@@ -463,5 +477,93 @@ public class BoardView {
             System.out.println("\n댓글 삭제 취소\n");
         }
 
+    }
+
+    /** 게시글 삽입 메서드
+     * @param memberNo
+     */
+    private void insertBoard(int memberNo) {
+        System.out.println("\n[게시글 작성]\n");
+
+        System.out.print("게시글 제목 : ");
+        String boardTitle = sc.nextLine();
+
+        System.out.println("\n게시글 내용 (종료 시 @exit 입력)\n");
+        String boardContent = inputContent();
+
+        Board board = new Board();
+
+        board.setBoardTitle(boardTitle);
+        board.setBoardContent(boardContent);
+        board.setMemberNo(memberNo);
+
+        try {
+
+            int result = service.insertBoard(board);
+
+            if (result > 0) System.out.println("\n게시글이 등록되었습니다.\n");
+            else System.out.println("\n게시글 작성 실패\n");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** 게시글 검색
+     */
+    private void searchBoard() {
+        System.out.println("\n[게시글 검색]\n");
+
+        int menuNum = -1;
+
+        do {
+            try {
+                System.out.println("--- 검색 조건을 선택해주세요 ---");
+                System.out.println("1. 제목");
+                System.out.println("2. 내용");
+                System.out.println("3. 제목 + 내용");
+                System.out.println("4. 작성자");
+                System.out.println("0. 돌아가기");
+
+                System.out.print("선택 >> ");
+                menuNum = sc.nextInt();
+                sc.nextLine();
+
+                switch (menuNum) {
+                    case 0:
+                        System.out.println("\n게시판 메뉴로 돌아갑니다.\n");
+                        break;
+                    case 1: case 2: case 3: case 4:
+                        System.out.print("검색어 : ");
+                        String keyword = sc.nextLine();
+
+                        List<Board> boardList = service.searchBoard(menuNum, keyword);
+
+                        if (boardList.isEmpty()) System.out.println("\n검색 결과가 없습니다.\n");
+                        else {
+                            System.out.println("------------------------------------------------------------------------");
+                            System.out.printf("%3s  %13s%12s   %7s%3s %7s%2s %s\n",
+                                    "글번호", "제목", "", "작성자", "", "작성일", "" , "조회수");
+                            System.out.println("------------------------------------------------------------------------");
+
+                            // 향상된 for문
+                            for(Board b : boardList) {
+
+                                System.out.printf("%3d  %20s [%d]  %10s  %s %3d\n",
+                                        b.getBoardNo(), b.getBoardTitle(), b.getReplyCount(),
+                                        b.getMemberName(), b.getCreateDate().toString(), b.getReadCount());
+                            }
+                        }
+
+                    default:
+                        System.out.println("\n메뉴에 작성된 번호를 입력해주세요.\n");
+                }
+
+            } catch (Exception e) {
+                System.out.println("\n입력 형식이 올바르지 않습니다. 다시 시도해주세요.\n");
+                sc.nextLine();
+                e.printStackTrace();
+            }
+        } while (menuNum != 0);
     }
 }

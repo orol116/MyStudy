@@ -5,6 +5,7 @@ import edu.kh.jdbc.board.model.vo.Board;
 import edu.kh.jdbc.board.model.vo.Reply;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import static edu.kh.jdbc.common.JDBCTemplate.*;
@@ -147,5 +148,29 @@ public class BoardService {
         close(conn);
 
         return result;
+    }
+
+    public int insertBoard(Board board) throws Exception {
+        Connection conn = getConnection();
+
+        int result = dao.insertBoard(conn, board);
+
+        if (result > 0) commit(conn);
+        else rollback(conn);
+
+        close(conn);
+
+        return result;
+    }
+
+    public List<Board> searchBoard(int menuNum, String keyword) throws Exception {
+
+        Connection conn = getConnection();
+
+        List<Board> boardList = dao.searchBoard(conn, menuNum, keyword);
+
+        close(conn);
+
+        return boardList;
     }
 }
