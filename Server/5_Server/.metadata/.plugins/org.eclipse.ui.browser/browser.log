@@ -25,3 +25,4 @@
 4월 27, 2022 14:40:45.222 [12800:880:0427/144045.222:ERROR:device_event_log_impl.cc(214)] [14:40:45.222] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 4월 27, 2022 14:40:45.222 [12800:880:0427/144045.222:ERROR:device_event_log_impl.cc(214)] [14:40:45.222] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 4월 27, 2022 14:41:43.02 [12800:11884:0427/144143.002:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 27, 2022 14:45:26.647 [12800:11060:0427/144526.647:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -106
