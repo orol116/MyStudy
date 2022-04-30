@@ -1,0 +1,12 @@
+package edu.kh.jsp.controller;
+
+// Tomcat(WAS == Servlet Container)에서 제공
+import javax.servlet.http.HttpServlet;
+
+// Servlet : 웹 서비스(요청, 응답)을 위한 자바 클래스
+
+public class SignUpServlet extends HttpServlet {
+	
+	
+
+}

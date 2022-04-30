@@ -1,0 +1,37 @@
+package edu.kh.jsp.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+// Tomcat(WAS == Servlet Container)에서 제공
+import javax.servlet.http.HttpServlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// Servlet : 웹 서비스(요청, 응답)을 위한 자바 클래스
+// @WebServlet("요청 주소") : Servlet 클래스 등록 + 요청 주소 매핑
+@WebServlet("/signUp")
+public class SignUpServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		String memberId = req.getParameter("memberId");
+		String message = memberId + "님의 가입을 환영합니다.";
+		
+		// 클라이언트와 연결된 출력 스트림을 이용해서 응답화면을 출력
+//		PrintWriter out = resp.getWriter();
+//		out.println("<!DOCTYPE html>");
+//		out.println("<html>");
+//		// ...
+//		out.println("</html>");
+		
+		// Servlet으로 응답 화면을 만드는 것이 어렵기 때문에
+		// 응답 화면 만드는 부분을 HTML로 변경! (JSP 사용)
+		// -> 눈에 보이는 코드는 HTMl이지만 해석은 Java
+	}
+
+}
