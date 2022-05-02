@@ -1,0 +1,7 @@
+package edu.kh.jsp.model.dao;
+
+import static edu.kh.jsp.common.JDBCTemplate.*;
+
+public class MemberDAO {
+
+}
