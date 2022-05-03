@@ -31,4 +31,28 @@ public class MemberService {
 		return loginMember;
 	}
 
+	/** 회원가입 Service
+	 * @param member
+	 * @return result
+	 * @throws Exception
+	 */
+	public int signUp(Member member) throws Exception {
+		
+		// 1) 커넥션 얻어오기
+		Connection conn = getConnection(); // DBCP에서 얻어옴
+		
+		// 2) DAO 메서드 호출 후 결과 반환 받기
+		int result = dao.signUp(conn, member);
+		
+		// 3) 트랜잭션 처리
+		//    result가 0인 경우 -> DAO return 구문을 잘못 작성한 것이다.
+		if (result > 0) commit(conn);
+		else			rollback(conn);
+		
+		// 4) conn 반환(DBCP로 돌려주기)
+		close(conn);
+		
+		return result;
+	}
+
 }
