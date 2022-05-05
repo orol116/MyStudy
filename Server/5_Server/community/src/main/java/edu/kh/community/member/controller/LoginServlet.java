@@ -30,6 +30,10 @@ public class LoginServlet extends HttpServlet {
 		String inputEmail = req.getParameter("inputEmail");
 		String inputPw = req.getParameter("inputPw");
 		
+		// getParameter() 오버라이딩 확인
+		System.out.println("inputEmail : " + inputEmail);
+		System.out.println("inputPw	   : " + inputPw);
+		
 		// 파라미터를 VO에 세팅(lombok 확인)
 		Member member = new Member();
 		member.setMemberEmail(inputEmail);
@@ -110,7 +114,7 @@ public class LoginServlet extends HttpServlet {
 				
 			} else { // 실패
 			
-				req.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 				
 			}
 			

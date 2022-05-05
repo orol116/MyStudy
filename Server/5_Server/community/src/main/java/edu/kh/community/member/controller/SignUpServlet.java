@@ -1,7 +1,6 @@
 package edu.kh.community.member.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +39,7 @@ public class SignUpServlet extends HttpServlet {
 		// 주소가 입력되지 않으면 null이 아니라 빈칸이 3개이다.
 		
 		String memberAddress = null;
-		if (address[0].equals("")) { // 우편번호가 빈칸이라면 == 주소 미작성
+		if (!address[0].equals("")) { // 우편번호가 빈칸이라면 == 주소 미작성
 			memberAddress = String.join(",,", memberAddress);
 			
 			// String.join("구분자", 배열)

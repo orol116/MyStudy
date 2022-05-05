@@ -17,51 +17,16 @@
 <body>
     
     <main>
-        <header>
 
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="#">
-                    <img src="resources/images/logo.jpg" id="home-logo">
-                </a>
-            </section>
+        <!--[ jsp:include 태그 ]
+            다른 jsp파일의 내용을 해당 위치에 포함시킨다. 
+            * 경로 작성 시 
+            외부 요청 주소 X (인터넷 주소, 최상위 : /community)
+            내부 접근 경로 O (파일 경로, 최상위 : /webapp)
+        -->
 
-            <section>
-                <article class="search-area">
-                    <!-- form 내부 input 태그 값을 서버 또는 페이지로 전달 -->
-                    <form action="#" name="search-form">
-        
-                        <!-- fieldset: form 내부에서 input을 종류별로 묶는 용도로 많이 사용 -->
-                        <fieldset>
-
-                            <!-- autocomplete="off" : HTML 기본 자동완성 사용 X -->
-                            <input type="search" id="query" name="query" 
-                                autocomplete="off" placeholder="검색어를 입력해주세요.">
-        
-                            <!-- 검색 버튼 -->
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>  
-                        </fieldset>
-                    </form>
-                </article>
-            </section>
-
-            
-            <section></section>
-
-        </header>
-
-
-        <nav>
-            <ul>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">자유 게시판</a></li>
-                <li><a href="#">질문 게시판</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">1:1문의</a></li>
-            </ul>
-        </nav>
-
-
+        <!-- 내부 접근 절대 경로 -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <section class="content">
             <section class="content-1">
@@ -100,7 +65,7 @@
 		                    </fieldset>
 		
                             <%-- 쿠키에 saveId가 있는 경우 --%>
-                            <c:if test="${cookie.saveId.value}">
+                            <c:if test="${!empty cookie.saveId.value}">
 
                                 <%-- chk 변수 생성(page scope) --%>
                                 <c:set var="chk" value="checked"/>
@@ -145,7 +110,7 @@
             				<div class="my-info">
                                 
                                 <div>
-                                    <a href="#" id="nickname">${loginMember.memberNickname}</a>
+                                    <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
 
                                     <a href="/community/member/logout" id="logout-btn">로그아웃</a>
                                 </div>
@@ -166,19 +131,8 @@
 
     </main>
 
-    <footer>
-        <p>Copyright &copy; KH Information Educational Institute A-Class</p>
-
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <!-- footer include -->
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
 </html>

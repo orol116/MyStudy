@@ -18,61 +18,14 @@
 <body>
     
     <main>
-        <header>
-
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="#">
-                    <img src="../resources/images/logo.jpg" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <article class="search-area">
-                    <!-- form 내부 input 태그 값을 서버 또는 페이지로 전달 -->
-                    <form action="#" name="search-form">
-        
-                        <!-- fieldset: form 내부에서 input을 종류별로 묶는 용도로 많이 사용 -->
-                        <fieldset>
-
-                            <!-- autocomplete="off" : HTML 기본 자동완성 사용 X -->
-                            <input type="search" id="query" name="query" 
-                                autocomplete="off" placeholder="검색어를 입력해주세요.">
-        
-                            <!-- 검색 버튼 -->
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>  
-                        </fieldset>
-                    </form>
-                </article>
-            </section>
-
-            
-            <section></section>
-
-        </header>
-
-
-        <nav>
-            <ul>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">자유 게시판</a></li>
-                <li><a href="#">질문 게시판</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">1:1문의</a></li>
-            </ul>
-        </nav>
+      
+      	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
         <!-- 회원가입 -->
         <section class="signUp-content">
-
-            <!-- 회원가입 화면 전환 주소(GET)과 같은 주소로
-                 실제 회원 확
-                 ->  -->
-        
+            
             <!-- 
                 절대경로 : /community/member/signUp
-
-                현재주소 : /signUp
                 상대경로 : /signUp2222
              -->
 
@@ -183,19 +136,7 @@
 
     </main>
 
-    <footer>
-        <p>Copyright &copy; KH Information Educational Institute A-Class</p>
-
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
 </html>
