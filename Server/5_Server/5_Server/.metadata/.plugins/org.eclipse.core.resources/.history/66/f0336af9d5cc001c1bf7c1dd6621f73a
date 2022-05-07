@@ -1,0 +1,11 @@
+package edu.kh.community.member.controller;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/member/myPage-changePw")
+public class myPageChangePwServlet extends HttpServlet {
+	
+	// get방식 요청 : /WEB-INF/views/member/myPage-changePw.jsp 요청 위임
+
+}

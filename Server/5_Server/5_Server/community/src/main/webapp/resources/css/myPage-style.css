@@ -75,7 +75,7 @@
 }
 
 .myPage-row > label{
-    width: 30%;
+    width: 40%;
     color: #455ba8;
 }
 
@@ -133,4 +133,18 @@ form[name="myPage-form"]{
     background-color: #455ba8;
     color: white;
     cursor: pointer;
+}
+
+.myPage-row > input[type="password"]{
+    width: 70%;
+}
+
+#secession-terms{
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    font-size: 16px;
+
+    /* 내용이 지정한 사이즈를 초과한 경우에 대한 속성 */
+    overflow: hidden;
 }
