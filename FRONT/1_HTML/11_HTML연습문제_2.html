@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_HTML연습문제_2</title>
+</head>
+<body>
+
+    <form action="">
+        <fieldset>
+            <legend>납품자 정보</legend>
+            <ol>
+                <li>
+                    <label for="name">납품자명 : </label>
+                    <input type="text"> 
+                </li><br>
+
+                <li>
+                    <label for="email">email : </label>
+                    <input type="email" placeholder="answer@naver.com">
+                </li><br>
+
+                <li>
+                    <label for="url">홈페이지 : </label>
+                    <input type="url" value="https://"> <br><br>
+                </li>
+
+                <li>
+                    <label for="region">지역 : </label>
+                    <select name="region" id="region">
+                        <option value="Seoul">서울</option>
+                        <option value="Busan" selected>부산</option>
+                    </select>
+                </li>
+            </ol>
+        
+        </fieldset>
+
+        <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li>
+                    <label for="pName">상품명 : </label>
+                    <input type="text">
+                </li><br>
+                <li>
+                    <label for="amount">납품수량 : </label>
+                    <input type="number" placeholder="최소 100">
+                </li><br>
+                <li>
+                    <label for="level">납품등급 : </label>
+                    <input type="range">
+                </li><br>
+                <li>
+                    <label for="issue">기타사항 : </label>
+                    <textarea name="issue" rows="5" cols="20"></textarea>
+                </li><br>
+            </ul>
+        </fieldset><br>
+
+        <button>send message</button>
+    </form>
+
+    
+</body>
+</html>
