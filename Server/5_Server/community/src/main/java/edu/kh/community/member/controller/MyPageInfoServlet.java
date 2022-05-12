@@ -35,8 +35,8 @@ public class MyPageInfoServlet extends HttpServlet {
 		
 		String memberAddress = null;
 		
-		if (!address[0].equals("")) { // 우편번호가 빈칸이라면 == 주소 미작성
-			memberAddress = String.join(",,", memberAddress);
+		if(!address[0].equals("")) { // 우편번호가 빈칸이 아니라면 == 주소 작성
+			memberAddress = String.join(",,", address);
 		}
 		
 		// *** 세션에서 로그인한 회원 정보 얻어오기 ***

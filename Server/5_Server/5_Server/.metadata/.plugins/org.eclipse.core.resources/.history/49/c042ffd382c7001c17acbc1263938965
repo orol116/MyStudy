@@ -1,5 +1,0 @@
-package edu.kh.jsp.common;
-
-public class JDBCTemplate {
-
-}

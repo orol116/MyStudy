@@ -13,126 +13,167 @@ import edu.kh.community.member.model.vo.Member;
 
 public class MemberDAO {
 
+	
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
 	private Properties prop;
 	
+	
 	// 기본 생성자
 	public MemberDAO() {
-		
 		try {
-			
 			prop = new Properties();
 			
-			String filePath = MemberDAO.class.getResource("/edu/kh/community/sql/member-sql.xml").getPath();
+			String filePath = MemberDAO.class.getResource("/edu/kh/community/sql/member-sql.xml").getPath();  
 			
 			prop.loadFromXML(new FileInputStream(filePath));
 			
-		} catch (Exception e) {
+			
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	
+	
 	/** 로그인 DAO
 	 * @param conn
-	 * @param member
-	 * @return loginMember;
+	 * @param mem
+	 * @return loginMember
 	 * @throws Exception
 	 */
-	public Member login(Connection conn, Member member) throws Exception {
-
+	public Member login(Connection conn, Member mem) throws Exception {
+		
 		Member loginMember = null; // 결과 저장용 변수
 		
 		try {
-			
 			// SQL 얻어오기
 			String sql = prop.getProperty("login");
 			
-			// PreparedStatement 생성 및 SQL 적재
+			
+			// PreparedStatment 생성 및 SQL 적재
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, member.getMemberEmail());
-			pstmt.setString(2, member.getMemberPw());
+			pstmt.setString(1, mem.getMemberEmail());
+			pstmt.setString(2, mem.getMemberPw());
 			
 			// SQL 수행
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
+			if( rs.next() ) {
 				
 				loginMember = new Member();
 				
-				loginMember.setMemberNo(   rs.getInt("MEMBER_NO")   );
-	            loginMember.setMemberEmail( rs.getString("MEMBER_EMAIL")  );
-	            loginMember.setMemberNickname( rs.getString("MEMBER_NICK")  );
-	            loginMember.setMemberTel( rs.getString("MEMBER_TEL")  );
-	            loginMember.setMemberAddress( rs.getString("MEMBER_ADDR")  );
-	            loginMember.setProfileImage( rs.getString("PROFILE_IMG")  );
-	            loginMember.setEnrollDate( rs.getString("ENROLL_DT")  );
+				loginMember.setMemberNo(   		rs.getInt("MEMBER_NO")   	 );
+				loginMember.setMemberEmail( 	rs.getString("MEMBER_EMAIL") );
+				loginMember.setMemberNickname( 	rs.getString("MEMBER_NICK")	 );
+				loginMember.setMemberTel( 		rs.getString("MEMBER_TEL") 	 );
+				loginMember.setMemberAddress( 	rs.getString("MEMBER_ADDR")  );
+				loginMember.setProfileImage( 	rs.getString("PROFILE_IMG")  );
+				loginMember.setEnrollDate( 		rs.getString("ENROLL_DT") 	 );
 				
 			}
+			
 			
 		} finally {
 			close(rs);
 			close(pstmt);
 		}
 		
-		return loginMember;
+		return loginMember; // null 또는 Member 객체 주소
 	}
+
+
 
 	/** 회원가입 DAO
 	 * @param conn
-	 * @param member
+	 * @param mem
 	 * @return result
 	 * @throws Exception
 	 */
-	public int signUp(Connection conn, Member member) throws Exception {
-		
-		int result = 0;
+	public int signUp(Connection conn, Member mem) throws Exception {
+
+		int result = 0; // 결과 저장용 변수
 		
 		try {
-			
 			String sql = prop.getProperty("signUp");
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, member.getMemberEmail());
-			pstmt.setString(2, member.getMemberPw());
-			pstmt.setString(3, member.getMemberNickname());
-			pstmt.setString(4, member.getMemberTel());
-			pstmt.setString(5, member.getMemberAddress());
+			pstmt.setString(1, mem.getMemberEmail());
+			pstmt.setString(2, mem.getMemberPw());
+			pstmt.setString(3, mem.getMemberNickname());
+			
+				
+			pstmt.setString(4, mem.getMemberTel());
+			pstmt.setString(5, mem.getMemberAddress());
 			
 			result = pstmt.executeUpdate();
 			
-		} finally {
+		}finally {
 			close(pstmt);
 		}
 		
+		
+		// 결과 반환
 		return result;
 	}
 
+
+
 	/** 회원 정보 수정 DAO
 	 * @param conn
-	 * @param member
+	 * @param mem
 	 * @return result
 	 * @throws Exception
 	 */
-	public int updateMember(Connection conn, Member member) throws Exception {
-
+	public int updateMember(Connection conn, Member mem) throws Exception{
 		int result = 0;
 		
 		try {
-			
 			String sql = prop.getProperty("updateMember");
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, member.getMemberNickname());
-			pstmt.setString(2, member.getMemberTel());
-			pstmt.setString(3, member.getMemberAddress());
-			pstmt.setInt(4, member.getMemberNo());
+			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberTel());
+			pstmt.setString(3, mem.getMemberAddress());
+			pstmt.setInt(	4, mem.getMemberNo());
 			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	/** 회원 비밀번호 수정 DAO
+	 * @param conn
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateMemberPw(Connection conn, String currentPw, String newPw, int memberNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("updateMemberPw");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPw);
+			pstmt.setInt(2, memberNo);
+			pstmt.setString(3, currentPw);
+
 			result = pstmt.executeUpdate();
 			
 		} finally {
@@ -142,4 +183,33 @@ public class MemberDAO {
 		return result;
 	}
 
+
+	/** 회원 탈퇴 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param memberPw
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Connection conn, int memberNo, String memberPw) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, memberPw);
+			
+			result = pstmt.executeUpdate();			
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 }

@@ -28,5 +28,21 @@
 		MEMBER_ADDR = ?
 		WHERE MEMBER_NO = ?
 	</entry>
+	
+	<!-- 회원 비밀번호 수정 -->
+	<entry key="updateMemberPw">
+		UPDATE MEMBER SET
+		MEMBER_PW = ?
+		WHERE MEMBER_NO = ?
+		AND MEMBER_PW = ?
+	</entry>
+	
+	<!-- 회원 탈퇴 -->
+	<entry key="secession">
+		UPDATE MEMBER SET 
+		SECESSION_FL = 'Y'
+		WHERE MEMBER_NO = ?
+		AND MEMBER_PW = ?
+	</entry>
 
 </properties>
