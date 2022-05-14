@@ -14,6 +14,14 @@
             background-color: gray;
             cursor: pointer;
         }
+
+        /* 복습 문제 */
+        #div1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: black;
+        }
     </style>
 
 </head>
@@ -80,6 +88,54 @@
     <div id="test3">클릭하면 크기가 늘어나요~</div>
 
     <hr>
+
+    <h3>이벤트 복습 문제</h3>
+
+    색상을 영어로 입력한 후 변경 버튼을 클릭하면 #div1의 배경색이 변경되도록 하시오
+
+    <div id="div1"></div>
+
+    <input type="text" id="input1">
+
+    <button id="changeBtn1">변경</button>
+
+    <hr>
+
+    <h1 style="color:red">HTML요소 기본 이벤트 제거</h1>
+
+    <h3>a태그 기본 이벤트 제거</h3>
+
+    <a href="https://www.naver.com/" id="moveNaver">네이버로 이동</a>
+
+    <hr>
+    <h3>form 태그 기본 이벤트 제거</h3>
+    <!-- 내부에서 submit 버튼이 클릭되면 action 경로로 제출한다. -->
+
+    <h4>방법 1. submit 버튼을 사용 안하는 방법</h4>
+
+    <form action="01_JS개요.html" name="testForm1">
+        "제출" 이라고 입력되었을 때만 버튼이 submit으로 동작<br>
+        입력 : <input type="text" name="in1" id="in1">
+        <button type="button" id="testBtn1">제출하기</button>
+    </form>
+
+    <hr>
+
+    <h3>방법 2. onsubmit을 이용해서 form태그 제출되는 것을 막는 방법</h3>
+
+    <!-- 
+        onsubmit : form 태그가 제출이 되었을 때
+                   -> 제출하기 버튼이 클릭되었을 때를 의미
+                   
+        onsubmit="return false"
+        -> onsubmit을 막는 방법
+     -->
+
+    <form action="01_JS개요.html" onsubmit="return checkIn2()">
+        "제출" 이라고 입력되었을 때만 버튼이 submit으로 동작<br>
+        입력 : <input type="text" name="in2" id="in2">
+        <button>제출하기</button>
+    </form>
 
     <!-- 
         * JS 코드를 body 태그 마지막에 작성하는 이유 *
