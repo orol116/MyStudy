@@ -21,3 +21,4 @@ STRING=\#277e4f | null | false | false | false | false
 UNIVERSAL=\#dedadd | null | false | false | false | false
 URI=\#277e4f | null | false | false | false | false
 eclipse.preferences.version=1
+newFileTemplateName=New CSS File

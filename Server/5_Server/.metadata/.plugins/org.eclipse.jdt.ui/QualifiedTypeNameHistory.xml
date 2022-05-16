@@ -25,7 +25,6 @@
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="edu.kh.community.common.JDBCTemplate"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="edu.kh.community.member.model.dao.MemberDAO"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
@@ -33,9 +32,7 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ParameterizedSingleTypeReference"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequestWrapper"/>
     <fullyQualifiedTypeName name="java.security.NoSuchAlgorithmException"/>
     <fullyQualifiedTypeName name="java.security.MessageDigest"/>
@@ -44,13 +41,20 @@
     <fullyQualifiedTypeName name="edu.kh.community.common.wrapper.EncryptWrapper"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="edu.kh.community.member.model.vo.Member"/>
     <fullyQualifiedTypeName name="javax.print.attribute.PrintServiceAttribute"/>
-    <fullyQualifiedTypeName name="edu.kh.community.member.model.service.MemberService"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="javax.websocket.Session"/>
     <fullyQualifiedTypeName name="java.nio.channels.SelectableChannel"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.jni.OS"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="edu.kh.community.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="java.lang.SecurityException"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="edu.kh.community.member.model.service.MemberService"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="oracle.jdbc.driver.json.tree.JsonpPrimitive.JsonpStringImpl"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.beans.beancontext.BeanContextServicesListener"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
 </qualifiedTypeNameHistroy>

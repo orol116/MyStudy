@@ -11,8 +11,8 @@
     <title>KH 커뮤니티</title>
 
     <link rel="stylesheet" href="resources/css/main-style.css">
-
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <main>
@@ -49,7 +49,7 @@
             		
        			        <!-- 절대경로 : /community/member/login -->
 		           	 	<!-- 상대 경로 (index.jsp) 기준-->
-		                <form action="member/login" method="POST" name="login-form">
+		                <form action="member/login" method="POST" name="login-form" onsubmit="return loginValidate()">
 		                   
 		                    <!-- 아이디(이메일)/비밀번호/로그인버튼 영역 -->
 		                    <fieldset id="id-pw-area">
@@ -137,6 +137,8 @@
 
     <!-- footer include -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+    
+    <!-- main.js 연결 -->
+    <script src="${contextPath}/resources/js/main.js"></script>
 </body>
 </html>
