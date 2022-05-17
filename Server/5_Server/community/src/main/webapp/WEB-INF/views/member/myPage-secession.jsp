@@ -43,11 +43,11 @@
             http://localhost:8080/community/member/myPage/secession (GET)
             http://localhost:8080/community/member/myPage/secession (POST) 
             -->
-                <form action="secession" method="POST" name="myPage-form">
+                <form action="secession" method="POST" name="myPage-form" onsubmit="return myPage_secession();">
 
                     <div class="myPage-row">
                         <label>비밀번호</label>
-                        <input type="password" name="memberPw" maxlength="30">              
+                        <input type="password" id="memberPw" name="memberPw" maxlength="30">              
                     </div>
 
                     
@@ -98,6 +98,8 @@
     </main>
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+   <script src="${contextPath}/resources/js/member/myPage-secession.js"></script>
 
 
 

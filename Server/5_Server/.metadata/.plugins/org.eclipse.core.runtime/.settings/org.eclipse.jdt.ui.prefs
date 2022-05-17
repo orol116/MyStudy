@@ -18,7 +18,7 @@ java_multi_line_comment=128,128,128
 java_operator=222,218,221
 java_single_line_comment=128,128,128
 java_string=88,139,69
-org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.layout=1
 org.eclipse.jdt.internal.ui.navigator.librariesnode=true
 org.eclipse.jdt.ui.formatterprofiles.version=21
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="java" deleted\="false" description\="System.out.println();" enabled\="true" name\="sout">System.out.println(${cursor});</template><template autoinsert\="true" context\="java" deleted\="false" description\="System.out.print();" enabled\="true" name\="soup">System.out.print(${cursor});</template><template autoinsert\="true" context\="java" deleted\="false" description\="System.out.printf();" enabled\="true" name\="souf">System.out.print(${cursor});</template></templates>

@@ -42,16 +42,16 @@
 				http://localhost:8080/community/member/myPage/info (GET)
 				http://localhost:8080/community/member/myPage/info (POST) 
 				-->
-                <form action="info" method="POST" name="myPage-form">
+                <form action="info" method="POST" name="myPage-form" onsubmit="return myPageCheck();">
 
                     <div class="myPage-row">
                         <label>닉네임</label>
-                        <input type="text" name="memberNickname" value="${loginMember.memberNickname}" maxlength="10">              
+                        <input type="text" id="memberNickname" name="memberNickname" value="${loginMember.memberNickname}" maxlength="10">              
                     </div>
 
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="11">
+                        <input type="text" id="memberTel" name="memberTel" value="${loginMember.memberTel}" maxlength="11">
                     </div>
                     
                     
@@ -89,7 +89,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-
+    <script src="${contextPath}/resources/js/member/mypageInfo.js"></script>
 
 </body>
 </html>

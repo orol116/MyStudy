@@ -57,4 +57,5 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.beans.beancontext.BeanContextServicesListener"/>
     <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="edu.kh.community.member.model.vo.Parent"/>
 </qualifiedTypeNameHistroy>
