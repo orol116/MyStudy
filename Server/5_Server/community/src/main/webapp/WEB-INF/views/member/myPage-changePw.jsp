@@ -63,7 +63,7 @@
     
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="${contextPath}/resources/js/member/myPage-changePw.js"></script>
+    <script src="${contextPath}/resources/js/member/myPage.js"></script>
 
 </body>
 </html>

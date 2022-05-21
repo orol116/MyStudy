@@ -211,5 +211,60 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+
+	/** 이메일 중복 검사 DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int emailDupCheck(Connection conn, String memberEmail) throws Exception {
+
+		int result = 0; // 결과 저장용 변수
+		
+		try {
+			String sql = prop.getProperty("emailDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberEmail);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) result = rs.getInt(1); // 1번 컬럼 결과를 result에 대입
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int nicknameDupCheck(Connection conn, String memberNickname) throws Exception {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("nicknameDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberNickname);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) result = rs.getInt(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 }

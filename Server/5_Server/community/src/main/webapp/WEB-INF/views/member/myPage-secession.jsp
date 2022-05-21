@@ -99,7 +99,7 @@
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-   <script src="${contextPath}/resources/js/member/myPage-secession.js"></script>
+   <script src="${contextPath}/resources/js/member/myPage.js"></script>
 
 
 

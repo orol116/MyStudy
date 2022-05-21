@@ -89,7 +89,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="${contextPath}/resources/js/member/mypageInfo.js"></script>
+    <script src="${contextPath}/resources/js/member/myPage.js"></script>
 
 </body>
 </html>

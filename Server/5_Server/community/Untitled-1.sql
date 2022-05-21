@@ -48,3 +48,14 @@ MODIFY MEMBER_PW VARCHAR2(100);
 -- 전체 회원 탈퇴 복구
 UPDATE MEMBER SET
 SECESSION_FL = 'N';
+
+-- 이메일 중복 검사
+-- 중복되면 1, 아니면 0
+SELECT COUNT(*) FROM MEMBER
+WHERE MEMBER_EMAIL = 'user01@kh.or.kr'
+AND SECESSION_FL = 'N';
+
+-- 닉네임 중복 검사(있으면 1, 없으면 0)
+SELECT COUNT(*) FROM MEMBER
+WHERE MEMBER_NICK = '유저일'
+AND SECESSION_FL = 'N';
