@@ -28,9 +28,9 @@
         <!-- 마이페이지 - 내 정보 -->
         <section class="myPage-content">
             
-         <!-- 사이드메뉴 include -->
-         <!-- jsp 액션 태그 -->
-         <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>
+			<!-- 사이드메뉴 include -->
+			<!-- jsp 액션 태그 -->
+			<jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>
 
 
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
@@ -39,15 +39,15 @@
                 <h1 class="myPage-title">회원 탈퇴</h1>
                 <span class="myPage-explanation">현재 비밀번호가 일치하는 경우 탈퇴할 수 있습니다.</span>
 
-            <!-- 
-            http://localhost:8080/community/member/myPage/secession (GET)
-            http://localhost:8080/community/member/myPage/secession (POST) 
-            -->
-                <form action="secession" method="POST" name="myPage-form" onsubmit="return myPage_secession();">
+				<!-- 
+				http://localhost:8080/community/member/myPage/secession (GET)
+				http://localhost:8080/community/member/myPage/secession (POST) 
+				-->
+                <form action="secession" method="POST" name="myPage-form" onsubmit="return secessionValidate()" >
 
                     <div class="myPage-row">
                         <label>비밀번호</label>
-                        <input type="password" id="memberPw" name="memberPw" maxlength="30">              
+                        <input type="password" name="memberPw" id="memberPw" maxlength="30">              
                     </div>
 
                     
@@ -97,11 +97,10 @@
 
     </main>
 
-   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-   <script src="${contextPath}/resources/js/member/myPage.js"></script>
-
-
+    <!-- myPage.js 추가 -->
+    <script src="${contextPath}/resources/js/member/myPage.js"></script>
 
 </body>
 </html>

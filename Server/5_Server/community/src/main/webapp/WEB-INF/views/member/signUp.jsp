@@ -78,16 +78,16 @@
                  </label>
                  
                  <div class="signUp-input-area">
-                     <input type="password" id="memberPw" name="memberPw"
+                     <input type="text" id="memberPw" name="memberPw"
                              placeholder="비밀번호" maxlength="30">
                  </div>
  
                  <div class="signUp-input-area">
-                     <input type="password" id="memberPwConfirm"
+                     <input type="text" id="memberPwConfirm"
                              placeholder="비밀번호 확인" maxlength="30">
                  </div>
  
-                 <span class="signUp-message" id="pwMessage">영어/숫자/특수문자(!,@,#,-,_) 6 ~ 30글자 사이로 입력해주세요.</span>
+                 <span class="signUp-message" id="pwMessage">영어, 숫자, 특수문자(!,@,#,-,_) 6~30글자 사이로 작성해주세요.</span>
  
  
  
@@ -101,7 +101,7 @@
                              placeholder="닉네임" maxlength="10">
                  </div>
  
-                 <span class="signUp-message" id="nicknameMessage">영어/숫자/한글 2 ~ 10글자 사이로 작성해주세요.</span>
+                 <span class="signUp-message" id="nicknameMessage">영어/숫자/한글 2~10글자 사이로 작성해주세요.</span>
  
  
  
@@ -149,7 +149,8 @@
     <!-- footer include -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <!-- jQuery 라이브러리 추가 -->
+
+    <!-- jQuery 라이브러리 추가(CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- signUp.js 연결 -->
