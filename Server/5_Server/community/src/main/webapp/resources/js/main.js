@@ -44,7 +44,7 @@ function loginValidate(){ // 로그인 유효성 검사
 // 아이디 저장 체크박스가 체크 되었을 때 이벤트 처리
 
 // radio, checkbox 체크 시 change 이벤트 발생
-document.getElementById("saveId").addEventListener("change", function(){
+document.getElementsByName("saveId")[0].addEventListener("change", function(){
 
     // 체크 여부 확인
     console.log(this.checked)
