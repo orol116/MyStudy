@@ -189,6 +189,10 @@ WHERE BOARD_ST = 'N'
 AND BOARD_CD = 1;
 
 -- 특정 게시판에서 일정 범위의 목록 조회
+
+-- ROWNUM이라는 가상의 행번호 컬럼은
+-- WHERE절에 사용되는 경우 무조건 1부터 적용되어야 한다.
+
 SELECT * FROM(
     SELECT ROWNUM RNUM, A.* FROM(
         SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICK, 
