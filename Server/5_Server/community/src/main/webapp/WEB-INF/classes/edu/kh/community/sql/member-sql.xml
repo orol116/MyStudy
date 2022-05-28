@@ -75,5 +75,6 @@
 		WHERE SECESSION_FL = 'N'
 		ORDER BY MEMBER_NO
 	</entry>
+	
 
 </properties>
