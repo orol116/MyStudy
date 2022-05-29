@@ -1,0 +1,7 @@
+package edu.kh.community.board.model.dao;
+
+import static edu.kh.community.common.JDBCTemplate.*;
+
+public class BoardDAO {
+
+}

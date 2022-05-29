@@ -1,0 +1,5 @@
+package edu.kh.community.board.model.vo;
+
+public class Pagination {
+	// 페이지네이션(페이징 처리)
+}

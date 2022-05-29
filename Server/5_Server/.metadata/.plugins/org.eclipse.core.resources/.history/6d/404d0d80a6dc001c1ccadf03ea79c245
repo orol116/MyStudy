@@ -1,0 +1,13 @@
+package edu.kh.community.board.model.vo;
+
+public class BoardDetail {
+
+	private int boardNo;
+	private String boardTItle;
+	private String boardContent;
+	private String createDate;
+	private String updateDate;
+	private int readCount;
+	private String memberNickname;
+	private String profileImage;
+}

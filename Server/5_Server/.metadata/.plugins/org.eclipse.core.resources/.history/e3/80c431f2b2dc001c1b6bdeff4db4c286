@@ -1,0 +1,16 @@
+package edu.kh.community.board.model.vo;
+
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class BoardImage {
+	
+	private int imageNo;
+	private String imageReName;
+	private String imageOriginal;
+	private int imageLevel;
+	private int boardNo;
+
+}

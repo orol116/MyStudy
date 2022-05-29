@@ -1,0 +1,7 @@
+package edu.kh.community.board.controller;
+
+// Controller : 요청에 따라 알맞은 서비스를 호출하고
+//				요청 처리 결과를 내보내줄(응답할) view를 선택
+public class ReplyController {
+
+}
