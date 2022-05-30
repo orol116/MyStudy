@@ -7,6 +7,7 @@ import java.util.List;
 
 import edu.kh.community.board.model.dao.ReplyDAO;
 import edu.kh.community.board.model.vo.Reply;
+import edu.kh.community.common.Util;
 
 public class ReplyService {
 	
@@ -27,6 +28,53 @@ public class ReplyService {
 		close(conn);
 		
 		return rList;
+	}
+
+	/** 댓글 등록 Service
+	 * 
+	 * @param reply
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertReply(Reply reply) throws Exception {
+
+		Connection conn = getConnection();
+		
+		// 개행문자 변경 처리
+		// textarea에 줄바꿈 문자 입력 시 \n, \r, \r\n, \n\r 중 하나로 입력이 된다.
+		// 이 문자들을 HTML에서 줄바꿈으로 인식할 수 있도록 "<br>" 태그로 변경
+		reply.setReplyContent(Util.newLineHandling(reply.getReplyContent()));
+		
+		// Cross Site Scripting(XSS, 크로스 사이트 스크립팅) 공격 방지 처리
+		reply.setReplyContent(Util.XSSHandling(reply.getReplyContent()));
+
+		int result = dao.insertReply(conn, reply);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 댓글 삭제 Service
+	 * @param replyNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int deleteReply(int replyNo) throws Exception{
+
+		Connection conn = getConnection();
+		
+		int result = dao.deleteReply(conn, replyNo);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 
 }
