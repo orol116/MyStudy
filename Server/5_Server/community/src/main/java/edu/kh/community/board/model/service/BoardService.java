@@ -55,7 +55,7 @@ public class BoardService {
 	 * @return detail
 	 * @throws Exception
 	 */
-	public BoardDetail seleBoardDetail(int boardNo) throws Exception {
+	public BoardDetail selectBoardDetail(int boardNo) throws Exception {
 
 		Connection conn = getConnection();
 		

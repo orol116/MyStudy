@@ -1,16 +1,16 @@
 /* 댓글 목록(ul) */
 #reply-list{
-    padding: 0;
+    padding : 0;
     list-style: none;
 }
 
 /* 댓글 한 줄(댓글 하나) */
 .reply-row{
     padding: 15px 30px;
-    border-top: 1px solid #ccc;
+    border-top : 1px solid #ccc;
 }
 
-/* 댓글 목록 - 작성자 영역 */
+/* 댓글 목록 - 작성자 영역*/
 .reply-writer{
     display: flex;
     align-items: center;
@@ -30,8 +30,8 @@
 
 /* 댓글 작성일 */
 .reply-date{
-    font-size: 0.8em;
-    color: #aaa;
+    font-size : 0.8em;
+    color : #aaa;
 }
 
 /* 버튼 영역 */
@@ -51,6 +51,8 @@
     background-color: #455ba8;
     border: 0;
     border-radius: 3px;
+
+    cursor: pointer;
 }
 
 /* 버튼 hover */
@@ -58,9 +60,9 @@
     background-color: white;
     border: 2px solid #455ba8;
     color: #455ba8;
-
-    cursor: pointer;
 }
+
+
 
 /* 댓글 작성 영역 */
 .reply-write-area{
@@ -79,12 +81,12 @@
 
 /* 댓글 등록 버튼 */
 #addReply{
-    flex-basis: 7%;
+    flex-basis: 8%;
     font-weight: bold;
     background-color: #455ba8;
     color: white;
-    cursor: pointer;
     border: 0;
+    cursor: pointer;
 }
 
 #addReply:hover{
