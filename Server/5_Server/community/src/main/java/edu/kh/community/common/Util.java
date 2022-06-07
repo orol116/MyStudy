@@ -4,7 +4,7 @@ public class Util {
 	
 	// 개행 문자 -> <br> 변경 메서드
 	public static String newLineHandling(String content) {
-		return content.replaceAll("(\n|\r|\r\n|\n\r)", "<br>");
+		return content.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
 	}
 	
 	// XSS : 관리자가 아닌 이용자가 악성 스크립트를 삽입해서 공격 / 웹 취약점 중 하나
