@@ -330,3 +330,38 @@ WHERE BOARD_NO = ?
 AND IMG_LEVEL IN(
 
 ;
+
+-- 2번 게시판에서 제목에 "50" 포함된 게시글 수 조회
+SELECT COUNT(*) FROM BOARD 
+JOIN MEMBER USING(MEMBER_NO)
+WHERE BOARD_ST = 'N'
+AND BOARD_CD = 2
+
+AND BOARD_CONTENT LIKE '%50%';
+
+
+-- 특정 게시판에서 조건을 만족하는 게시글 목록 조회
+
+-- key = searchBoardList1
+SELECT * FROM(
+   SELECT ROWNUM RNUM, A.* FROM(
+      SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICK, 
+         TO_CHAR( CREATE_DT, 'YYYY-MM-DD' ) AS CREATE_DT, 
+         READ_COUNT ,
+         (SELECT IMG_RENAME FROM BOARD_IMG
+            WHERE IMG_LEVEL = 0
+            AND BOARD_IMG.BOARD_NO = BOARD.BOARD_NO) THUMBNAIL
+            
+      FROM BOARD
+      JOIN MEMBER USING(MEMBER_NO)
+      WHERE BOARD_CD = 1
+      AND BOARD_ST = 'N'
+
+      -- condition
+      AND BOARD_TITLE LIKE '%50%'
+
+      -- key = searchBoardList2
+      ORDER BY BOARD_NO DESC
+   ) A
+)
+WHERE RNUM BETWEEN 1 AND 10
