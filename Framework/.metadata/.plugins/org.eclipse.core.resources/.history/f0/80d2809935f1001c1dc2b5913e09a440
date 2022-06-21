@@ -1,0 +1,8 @@
+package edu.kh.comm.member.model.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository // 영속성을 가지는 가지는 객체임을 명시 + bean 등록
+public class MemberDAO {
+
+}
