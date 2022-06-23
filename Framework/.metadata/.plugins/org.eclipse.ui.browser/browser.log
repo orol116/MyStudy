@@ -7,3 +7,33 @@
 6월 21, 2022 09:30:35.700 [9824:928:0621/093035.700:ERROR:device_event_log_impl.cc(214)] [09:30:35.700] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 6월 21, 2022 09:30:35.701 [9824:928:0621/093035.700:ERROR:device_event_log_impl.cc(214)] [09:30:35.701] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 6월 21, 2022 09:31:31.972 [9824:2208:0621/093131.972:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+6월 22, 2022 11:49:26.901 NEW SESSION
+6월 22, 2022 11:49:26.901 [8992:13240:0622/114926.899:ERROR:device_event_log_impl.cc(214)] [11:49:26.900] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 11:49:26.903 [8992:13240:0622/114926.902:ERROR:device_event_log_impl.cc(214)] [11:49:26.903] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 11:49:26.903 [8992:13240:0622/114926.902:ERROR:device_event_log_impl.cc(214)] [11:49:26.903] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 11:50:24.63 [8992:11780:0622/115024.063:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+6월 22, 2022 11:59:04.701 [8992:13240:0622/115904.701:ERROR:device_event_log_impl.cc(214)] [11:59:04.698] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 22, 2022 11:59:04.706 [8992:13240:0622/115904.706:ERROR:device_event_log_impl.cc(214)] [11:59:04.705] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+6월 22, 2022 12:03:36.915 [8992:13240:0622/120336.914:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 22, 2022 12:03:36.915 [8992:13240:0622/120336.914:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+6월 22, 2022 15:11:01.812 NEW SESSION
+6월 22, 2022 15:11:01.812 [16296:6320:0622/151101.811:ERROR:device_event_log_impl.cc(214)] [15:11:01.811] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 15:11:01.918 [16296:6320:0622/151101.814:ERROR:device_event_log_impl.cc(214)] [15:11:01.815] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 15:11:01.918 [16296:6320:0622/151101.815:ERROR:device_event_log_impl.cc(214)] [15:11:01.815] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 15:11:58.746 [16296:14204:0622/151158.745:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+6월 22, 2022 15:42:58.409 [16296:6320:0622/154258.409:ERROR:device_event_log_impl.cc(214)] [15:42:58.408] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 22, 2022 15:42:58.416 [16296:6320:0622/154258.416:ERROR:device_event_log_impl.cc(214)] [15:42:58.416] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+6월 22, 2022 16:02:10.936 [16296:6320:0622/160210.935:ERROR:device_event_log_impl.cc(214)] [16:02:10.933] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 22, 2022 16:02:10.944 [16296:6320:0622/160210.943:ERROR:device_event_log_impl.cc(214)] [16:02:10.940] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+6월 22, 2022 16:03:33.90 [16296:6320:0622/160333.090:ERROR:device_event_log_impl.cc(214)] [16:03:33.089] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 22, 2022 16:03:33.109 [16296:6320:0622/160333.109:ERROR:device_event_log_impl.cc(214)] [16:03:33.107] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+6월 22, 2022 16:28:59.135 [16296:6320:0622/162859.132:ERROR:device_event_log_impl.cc(214)] [16:28:59.131] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+6월 22, 2022 16:28:59.139 [16296:6320:0622/162859.138:ERROR:device_event_log_impl.cc(214)] [16:28:59.138] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+6월 22, 2022 16:32:47.159 [9136:8144:0622/163247.158:ERROR:device_event_log_impl.cc(214)] [16:32:47.158] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 16:32:47.162 [9136:8144:0622/163247.162:ERROR:device_event_log_impl.cc(214)] [16:32:47.162] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 16:32:47.162 [9136:8144:0622/163247.162:ERROR:device_event_log_impl.cc(214)] [16:32:47.162] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 16:54:06.867 [11428:10120:0622/165406.866:ERROR:device_event_log_impl.cc(214)] [16:54:06.867] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 16:54:06.877 [11428:10120:0622/165406.877:ERROR:device_event_log_impl.cc(214)] [16:54:06.877] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+6월 22, 2022 16:54:06.877 [11428:10120:0622/165406.877:ERROR:device_event_log_impl.cc(214)] [16:54:06.877] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
