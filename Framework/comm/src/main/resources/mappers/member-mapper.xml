@@ -115,14 +115,46 @@
 		  
 		  resultMap="member_rm" -> 조회 결과를 member_rm을 이용하여 비교해 vo에 세팅
 	 -->
+	 <!-- 로그인 -->
 	 <select id="login"  parameterType="member"  resultMap="member_rm"  >
  		SELECT MEMBER_NO, MEMBER_EMAIL,MEMBER_NICK ,MEMBER_TEL,
        		MEMBER_ADDR, PROFILE_IMG, 
-    		TO_CHAR( ENROLL_DT, 'YYYY-MM-DD HH24:MI:SS') AS ENROLL_DT
+    		TO_CHAR( ENROLL_DT, 'YYYY-MM-DD HH24:MI:SS') AS ENROLL_DT, MEMBER_PW
 		FROM MEMBER_S
 		WHERE MEMBER_EMAIL = #{memberEmail}
-		AND MEMBER_PW = #{memberPw}
+<!-- 		AND MEMBER_PW = #{memberPw} -->
 		AND SECESSION_FL = 'N'
   	</select>
-
+  	
+  	<!-- 이메일 중복 검사 -->
+  	<select id="emailDupCheck" parameterType="string" resultType="int">
+  		SELECT COUNT(*) FROM MEMBER_S
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND SECESSION_FL = 'N'
+  	</select>
+  	
+	<!-- 닉네임 중복 검사 -->
+  	<select id="nicknameDupCheck" parameterType="string" resultType="int">
+  		SELECT COUNT(*) FROM MEMBER_S
+		WHERE MEMBER_NICK = #{memberNickname}
+		AND SECESSION_FL = 'N'
+  	</select>
+  	
+  	<!-- 
+  		 * parameterType 생략 *
+  		 - 선택 사항이기 때문에 생략이 가능하다.
+  	 -->
+  	
+  	<!-- 회원 가입 -->
+  	<insert id="signUp" parameterType="member">
+		INSERT INTO MEMBER_S VALUES(
+			SEQ_MEMBER_NO_S.NEXTVAL,
+			#{memberEmail},
+			#{memberPw},
+			#{memberNickname},
+			#{memberTel},
+			#{memberAddress},
+			DEFAULT, DEFAULT, DEFAULT
+		)
+  	</insert>
 </mapper>

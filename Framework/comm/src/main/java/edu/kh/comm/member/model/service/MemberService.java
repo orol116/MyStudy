@@ -20,4 +20,25 @@ public interface MemberService {
 	 */
 	Member login(Member inputMember);
 	
+
+	/** 이메일 중복 검사 Service
+	 * @param memberEmail
+	 * @return result
+	 */
+	int emailDupCheck(String memberEmail);
+
+	
+	/** 닉네임 중복 검사 Service
+	 * @param memberNickname
+	 * @return result
+	 */
+	int nicknameDupCheck(String memberNickname);
+
+
+	/** 회원 가입 Service
+	 * @param inputMember
+	 * @return result
+	 */
+	int signUp(Member inputMember);
+	
 }

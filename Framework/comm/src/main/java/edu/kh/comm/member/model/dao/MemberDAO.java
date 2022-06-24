@@ -43,4 +43,35 @@ public class MemberDAO {
 		return loginMember;
 	}
 
+	/** 이메일 중복 검사 DAO
+	 * @param memberEmail
+	 * @return result
+	 */
+	public int emailDupCheck(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.emailDupCheck", memberEmail);
+	}
+
+	/** 닉네임 중복 검사 DAO
+	 * @param memberNickname
+	 * @return result
+	 */
+	public int nicknameDupCheck(String memberNickname) {
+		return sqlSession.selectOne("memberMapper.nicknameDupCheck", memberNickname);
+	}
+
+	/** 회원 가입 DAO
+	 * @param inputMember
+	 * @return result
+	 */
+	public int signUp(Member inputMember) {
+
+		// INSERT, UPDATE, DELETE를 수행하기 위한 메서드가 존재한다.
+		
+		// * insert() / update() / delete 메서드의 반환 값은 int형으로 고정이다.
+		//   -> mapper에서도 resultType이 항상 _int로 고정
+		//      -> resultType 생략 가능(묵시적으로 _int)
+		
+		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
 }

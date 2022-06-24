@@ -42,6 +42,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 지정된 패키지 이하에 존재하는
+		 @Component, @Controller, @Service, @Repository를 찾아서 bean으로 생성해준다.	
+	-->
 	<context:component-scan base-package="edu.kh.comm" />
 	
 	
