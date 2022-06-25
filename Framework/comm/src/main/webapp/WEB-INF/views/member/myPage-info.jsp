@@ -40,19 +40,19 @@
                 <span class="myPage-explanation">원하는 회원 정보를 수정할 수 있습니다.</span>
 
 				<!-- 
-				http://localhost:8080/community/member/myPage/info (GET)
-				http://localhost:8080/community/member/myPage/info (POST) 
+				http://localhost:8080/comm/member/myPage/info (GET)
+				http://localhost:8080/comm/member/myPage/info (POST) 
 				-->
                 <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
 
                     <div class="myPage-row">
                         <label>닉네임</label>
-                        <input type="text" name="memberNickname"  id="memberNickname"  value="${loginMember.memberNickname}" maxlength="10">              
+                        <input type="text" name="updateNickname"  id="memberNickname"  value="${loginMember.memberNickname}" maxlength="10">              
                     </div>
 
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel"  id="memberTel" value="${loginMember.memberTel}" maxlength="11">
+                        <input type="text" name="updateTel"  id="memberTel" value="${loginMember.memberTel}" maxlength="11">
                     </div>
                     
                     
@@ -66,17 +66,17 @@
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress"  value="${addr[0]}"  maxlength="6">
+                        <input type="text" name="updateAddress" id="postcode" value="${addr[0]}"  maxlength="6">
 
-                        <button type="button" id="info-address-btn">검색</button>
+                        <button type="button" id="info-address-btn" onclick="execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress" value="${addr[1]}">
+                        <input type="text" name="updateAddress" id="address" value="${addr[1]}">
                     </div>
                     
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress" value="${addr[2]}">
+                        <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
                     </div>
 
                     <button id="info-update-btn">수정하기</button>
@@ -87,6 +87,14 @@
     </main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+    <%-- 다음 주소 API --%>
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:11;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- myPage.js 추가 -->
     <script src="${contextPath}/resources/js/member/myPage.js"></script>

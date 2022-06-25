@@ -1,0 +1,61 @@
+package edu.kh.comm.member.model.service;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import edu.kh.comm.member.model.dao.MyPageDAO;
+import edu.kh.comm.member.model.vo.Member;
+
+@Service
+public class MyPageServiceImpl implements MyPageService {
+
+	@Autowired
+	private MyPageDAO dao;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
+
+	// 회원 정보 수정 Service
+	@Override
+	public int updateInfo(Map<String, Object> paramMap) {
+		return dao.updateInfo(paramMap);
+	}
+
+	// 비밀번호 변경 Service
+	@Override
+	public int updatePw(Map<String, Object> pwMap, Member loginMember) {
+		
+		String nowPw = dao.selectCurrentPw(pwMap);
+
+		if (bcrypt.matches((String)pwMap.get("currentPw"), nowPw)) {
+			pwMap.put("newPw", bcrypt.encode((String)pwMap.get("newPw")));
+			return dao.updatePw(pwMap);
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public int secession(Map<String, Object> scsMap) {
+
+		String nowPw = dao.selectCurrentPw(scsMap);
+		int result = 0;
+		
+		if (bcrypt.matches((String)scsMap.get("memberPw"), nowPw)) {
+			
+			result = secession(scsMap);
+		}
+		
+		return result;
+	}
+	
+	
+
+	
+	
+	
+	
+}

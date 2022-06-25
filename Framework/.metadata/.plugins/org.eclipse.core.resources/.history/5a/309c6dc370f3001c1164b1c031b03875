@@ -1,0 +1,32 @@
+package edu.kh.comm.member.model.service;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.kh.comm.member.model.dao.MyPageDAO;
+import edu.kh.comm.member.model.vo.Member;
+
+@Service
+public class MyPageServiceImpl implements MyPageService {
+
+	@Autowired
+	private MyPageDAO dao;
+
+	// 회원 정보 수정 Service
+	@Override
+	public int updateInfo(Map<String, Object> paramMap) {
+		return dao.updateInfo(paramMap);
+	}
+
+	// 현재 비밀번호 조회 Service
+	@Override
+	public String selectCurrentPw(int memberNo) {
+		return dao.selectCurrentPw(memberNo);
+	}
+	
+	
+	
+	
+}

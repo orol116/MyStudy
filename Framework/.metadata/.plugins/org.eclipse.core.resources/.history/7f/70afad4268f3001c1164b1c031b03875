@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<!-- 파라미터 타입이 map인 경우
+	
+		 1) parameterType="java.util.Map"
+		 2) parameterType="map"
+		 3) 생략 (TypeHandler가 알아서 지정해준다.)
+	 -->
+
+	<!-- 회원 정보 수정 -->
+	<update id="updateInfo">
+		UPDATE MEMBER_S SET
+		MEMBER_NICK = #{updateNickname},
+		MEMBER_TEL = #{updateTel},
+		MEMBER_ADDR = #{memberAddress},
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+</mapper>
