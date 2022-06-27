@@ -1,6 +1,9 @@
 package edu.kh.comm.common.filter;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -17,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 @WebFilter(filterName = "initFilter", urlPatterns = "/*")
 public class InitFilter extends HttpFilter implements Filter {
-       
+	
 	// print 구문은 사용하면 좋지 않다.
 	// -> Logger / Debug Mode 사용
 	

@@ -1,0 +1,24 @@
+package edu.kh.comm.board.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.kh.comm.board.model.service.BoardService;
+
+@Controller
+@RequestMapping("/board")
+public class BoardController {
+	
+	@Autowired
+	private BoardService service;
+
+	// 게시글 목록 조회
+	// @PathVariable("value")
+	@GetMapping("/list/{boardCode}")
+	public String boardList(@PathVariable("boardCode") int boardCode) {
+		return null;
+	}
+}

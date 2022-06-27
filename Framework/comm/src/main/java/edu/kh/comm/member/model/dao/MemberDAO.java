@@ -1,5 +1,7 @@
 package edu.kh.comm.member.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +74,26 @@ public class MemberDAO {
 		//      -> resultType 생략 가능(묵시적으로 _int)
 		
 		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
+	/** 회원 1명 정보 조회 DAO
+	 * @param memberEmail
+	 * @return member
+	 */
+	public Member selectOne(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.selectOne", memberEmail);
+		
+	}
+
+	/** 회원 목록 조회 DAO
+	 * @return memberList
+	 */
+	public List<Member> selectAll() {
+		
+		// selectList() : 여러 행을 조회 -> 리턴 타입이 List
+		// * 조회되는 모든 행을 순차적으로 접근해서 VO에 필드 값을 담은 후 List에 자동 추가
+		
+		return sqlSession.selectList("memberMapper.selectAll");
 	}
 
 }

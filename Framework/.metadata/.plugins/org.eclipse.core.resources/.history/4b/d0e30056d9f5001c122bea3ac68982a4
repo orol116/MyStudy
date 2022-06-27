@@ -1,0 +1,5 @@
+package edu.kh.comm.common.interceptor;
+
+public class BoardTypeInterceptor {
+
+}

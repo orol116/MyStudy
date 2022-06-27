@@ -157,4 +157,26 @@
 			DEFAULT, DEFAULT, DEFAULT
 		)
   	</insert>
+  	
+  	<!-- 회원 1명 정보 조회 -->
+  	<select id="selectOne" resultMap="member_rm">
+  		SELECT MEMBER_EMAIL, MEMBER_NICK, MEMBER_TEL, MEMBER_ADDR, 
+  			TO_CHAR(ENROLL_DT, 'YYYY"년" MM"월" DD"일"') ENROLL_DT
+  		FROM MEMBER_S
+  		WHERE MEMBER_EMAIL = #{memberEmail}
+  		AND SECESSION_FL = 'N'
+  	</select>
+  	
+  	
+  	<!-- 회원 목록 조회 -->
+  	<!-- 
+  		 ** 조회 결과가 다수의 행이여도
+  		    한 행의 결과에 대한 resultType 또는 resultMap만 작성하면 된다!! **
+  	 -->
+  	<select id="selectAll" resultMap="member_rm">
+  		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICK
+  		FROM MEMBER_S
+  		WHERE SECESSION_FL = 'N'
+  		ORDER BY MEMBER_NO
+  	</select>
 </mapper>
