@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.comm.board.model.vo.Board;
 import edu.kh.comm.board.model.vo.BoardDetail;
+import edu.kh.comm.board.model.vo.BoardImage;
 import edu.kh.comm.board.model.vo.BoardType;
 import edu.kh.comm.board.model.vo.Pagination;
 
@@ -65,6 +66,30 @@ public class BoardDAO {
 	 */
 	public int updateReadCount(int boardNo) {
 		return sqlSession.update("boardMapper.updateReadCount", boardNo);
+	}
+
+	/** 게시글 삽입 DAO
+	 * @param detail
+	 * @return boardNo
+	 */
+	public int insertBoard(BoardDetail detail) {
+		
+		int result = sqlSession.insert("boardMapper.insertBoard", detail);
+		
+		if (result > 0) result = detail.getBoardNo();
+		
+		// 게시글 삽입 성공 시
+		// <selectKey> 태그를 이용해 세팅된 boardNo 값을 반환한다. -> 게시글 번호 사용 가능
+		
+		return result;
+	}
+
+	/** 게시글 이미지 삽입 DAO
+	 * @param boardImageList
+	 * @return result
+	 */
+	public int insertBoardImageList(List<BoardImage> boardImageList) {
+		return sqlSession.insert("boardMapper.insertBoardImageList", boardImageList);
 	}
 
 }

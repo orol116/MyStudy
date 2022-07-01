@@ -127,3 +127,38 @@ JOIN MEMBER_S USING(MEMBER_NO)
 WHERE BOARD_ST = 'N'
 AND BOARD_CD = ${boardCode}
 ORDER BY BOARD_NO DESC;
+
+
+-- 서브쿼리르 이용한 INSERT
+--> SELECT 조회 결과를 BOARD_IMG 테이블에 삽입
+
+-- 조건 1 : 서브쿼리로 조회된 RESULT SET의 컬럼과 BOARD_IMG 컬럼명이 같아야 한다. 
+-- 조건 2 : UNION ALL로 합쳐진 서브쿼리에서는 시퀀스를 사용할 수 없다
+INSERT INTO BOARD_IMG;
+
+SELECT SEQ_IMG_NO.NEXTVAL, A.* FROM (
+    SELECT --SEQ_IMG_NO.NEXTVAL IMG_NO, 
+        '변경된 파일명1' IMG_RENAME,
+        '원본 파일명1'   IMG_ORIGINAL,
+        '0'              IMG_LEVEL,
+        '1563'           BOARD_NO
+    FROM DUAL
+
+    UNION ALL
+
+    SELECT --SEQ_IMG_NO.NEXTVAL IMG_NO, 
+        '변경된 파일명1' IMG_RENAME,
+        '원본 파일명1'   IMG_ORIGINAL,
+        '0'              IMG_LEVEL,
+        '1563'           BOARD_NO
+    FROM DUAL
+    
+    UNION ALL
+
+    SELECT --SEQ_IMG_NO.NEXTVAL IMG_NO, 
+        '변경된 파일명1' IMG_RENAME,
+        '원본 파일명1'   IMG_ORIGINAL,
+        '0'              IMG_LEVEL,
+        '1563'           BOARD_NO
+    FROM DUAL
+) A;

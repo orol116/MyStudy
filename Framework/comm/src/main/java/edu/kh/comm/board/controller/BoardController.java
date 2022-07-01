@@ -1,5 +1,6 @@
 package edu.kh.comm.board.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.comm.board.model.service.BoardService;
 import edu.kh.comm.board.model.vo.BoardDetail;
@@ -23,6 +30,7 @@ import edu.kh.comm.member.model.vo.Member;
 
 @Controller
 @RequestMapping("/board")
+@SessionAttributes({"loginMember"})
 public class BoardController {
 	
 	@Autowired
@@ -144,5 +152,83 @@ public class BoardController {
 		
 		model.addAttribute("detail", detail);
 		return "board/boardDetail";
+	}
+	
+	// 게시글 작성 화면 전환
+	// @RequestMapping(value = "/write/{boardCode}", method = RequestMethod.GET)
+	@GetMapping(value = "/write/{boardCode}")
+	public String boardWriteForm(@PathVariable("boardCode") int boardCode
+							   , String mode) {
+		
+		if (mode.equals("update")) {
+			// 게시글 상세조회 서비스 호출
+			
+		}
+		
+		return "board/boardWriteForm";
+	}
+	
+	// 게시글 작성(삽입/수정)
+	@PostMapping("/write/{boardCode}") 
+	public String boardWrite(BoardDetail detail // boardTitle, boardContent
+			    		   , @RequestParam(value = "images", required = false) List<MultipartFile> imageList // 업로드 파일(이미지) 리스트
+			    		   , @PathVariable("boardCode") int boardCode
+			    		   , String mode
+			    		   , @ModelAttribute("loginMember") Member loginMember
+			    		   , HttpServletRequest req
+			    		   , RedirectAttributes ra) throws IOException {
+		
+		// 1) 로그인한 회원 번호 얻어오기
+		detail.setMemberNo(loginMember.getMemberNo());
+		
+		// 2) 이미지 저장 경로 (webPath, folderPath)
+		String webPath = "/resources/images/board/";
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		if (mode.equals("insert")) { // 삽입
+			
+			// 게시글 부분 삽입(제목, 내용, 회원번호, 게시판 코드)
+			// -> 삽입된 게시글의 번호(boardNo) 반환 
+			//    왜? -> 삽입이 끝나면 상세조회로 리다이렉트 하기 위해서
+			
+			// 게시글에 포함된 이미지 정보 삽입(0 ~ 5개, 게시글 번호 필요!)
+			// -> 실제 파일로 변환해서 서버에 저장(transfer())
+			
+			// 두 번의 insert 중 한 번이라도 실패하면 전체 rollback (트랜잭션 처리)
+			
+			
+			/* @PathVariable() 로 얻어온 boardCode가 자동으로 커맨드 객체 BoardDetail에 세팅된다.
+			 * 
+			 * input type="file" 태그의 name이 같다면 List<MultipartFile>에 담겨진다.
+			 * 
+			 * List<MultipartFile>은 업로드된 파일이 없어도 name이 같은 input태그를 모두 얻어온다!
+			 * -> 업로드 확인 시 List 요소를 하나씩 꺼내 파일명이 있는지 또는 크기가 0이 아닌지를 이용해서 확인
+			 */
+			
+			int boardNo = service.insertBoard(detail, imageList, webPath, folderPath);
+			
+			String path = null;
+			String message = null;
+			
+			if (boardNo > 0) {
+				// /board/write/1
+				// /board/detail/1/1500
+				
+				path = "../detail/" + boardCode + "/" + boardNo;
+				message = "게시글이 등록되었습니다";
+			} else {
+				path = req.getHeader("referer");
+				message = "게시글 삽입 실패";
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:" + path;
+			
+		} else { // 수정
+			
+		}
+		
+		return null;
 	}
 }
