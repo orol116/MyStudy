@@ -146,13 +146,13 @@
 
             <!-- /board/list?type=1&cp=10 &key=t&query=안녕 -->
 
-            <form action="list" method="get" id="boardSearch" onsubmit="return searchValidate()">
-                <input type="hidden" name="type" value="${param.type}">
+            <form action="${boardCode}" method="get" id="boardSearch" onsubmit="return searchValidate()">
+
 
                 <select name="key" id="search-key">
                     <option value="t">제목</option>
-                  op  <option value="c">내용</option>
-                    <option value="tc">제목+내용</tion>
+                    <option value="c">내용</option>
+                    <option value="tc">제목+내용</option>
                     <option value="w">작성자</option>
                 </select>
 

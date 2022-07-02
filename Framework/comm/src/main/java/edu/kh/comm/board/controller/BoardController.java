@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.comm.board.model.service.BoardService;
 import edu.kh.comm.board.model.vo.BoardDetail;
+import edu.kh.comm.common.Util;
 import edu.kh.comm.member.model.vo.Member;
 
 @Controller
@@ -48,13 +49,28 @@ public class BoardController {
 	@GetMapping("/list/{boardCode}")
 	public String boardList(@PathVariable("boardCode") int boardCode
 						  , @RequestParam(value="cp", required=false, defaultValue = "1") int cp
-						  , Model model) {
+						  , Model model
+						  , @RequestParam Map<String, Object> paramMap) {
 		
 		// 게시글 목록 조회 서비스 호출
 		// 1) 게시판 이름 조회 -> 인터셉터 application에 올려둔 boardTypeList 쓸 수 있을듯?
 		// 2) 페이지네이션 객체 생성(listCount)
 		// 3) 게시글 목록 조회
-		Map<String, Object> map = service.selectBoardList(cp, boardCode);
+		Map<String, Object> map = null;
+		
+		if (paramMap.get("key") == null) { // 검색이 아닌 경우
+			map = service.selectBoardList(cp, boardCode);
+		} else { // 검색인 경우
+			
+			// 검색에 필요한 데이터를 paramMap에 모두 담아서 서비스 호출
+			// -> key, query, cp, boardCode
+			
+			paramMap.put("cp", cp); // 있으면 같은 값으로 덮어쓰기, 없으면 추가
+			paramMap.put("boardCode", boardCode);
+			
+			map = service.searchBoardList(paramMap);
+			
+		}
 		
 		model.addAttribute("map", map);
 		
@@ -158,14 +174,22 @@ public class BoardController {
 	// @RequestMapping(value = "/write/{boardCode}", method = RequestMethod.GET)
 	@GetMapping(value = "/write/{boardCode}")
 	public String boardWriteForm(@PathVariable("boardCode") int boardCode
-							   , String mode) {
+							   , String mode
+							   , @RequestParam(value = "no", required = false, defaultValue = "0") int boardNo
+							   , Model model) {
 		
 		if (mode.equals("update")) {
-			// 게시글 상세조회 서비스 호출
+			// 게시글 상세조회 서비스 호출(boardNo)
+			BoardDetail detail = service.selectBoardDetail(boardNo);
+			// -> 개행문자가 <br>로 되어있는 상태 -> textarea로 출력 예정이기 때문에 \n으로 변경
+			
+			detail.setBoardContent(Util.newLineClear(detail.getBoardContent()));
+			
+			model.addAttribute("detail", detail);
 			
 		}
 		
-		return "board/boardWriteForm";
+		return "board/boardWriteForm"; 
 	}
 	
 	// 게시글 작성(삽입/수정)
@@ -176,7 +200,10 @@ public class BoardController {
 			    		   , String mode
 			    		   , @ModelAttribute("loginMember") Member loginMember
 			    		   , HttpServletRequest req
-			    		   , RedirectAttributes ra) throws IOException {
+			    		   , RedirectAttributes ra
+			    		   , @RequestParam(value = "deleteList", required = false) String deleteList
+			    		   , @RequestParam(value = "cp", required = false, defaultValue = "1") int cp 
+			    		   ) throws IOException {
 		
 		// 1) 로그인한 회원 번호 얻어오기
 		detail.setMemberNo(loginMember.getMemberNo());
@@ -227,8 +254,52 @@ public class BoardController {
 			
 		} else { // 수정
 			
+			// 게시글 수정 서비스 호출
+			// - 게시글 번호를 알고 있기 때문에 수정 결과만 반환받으면 된다.
+			int result = service.updateBoard(detail, imageList, webPath, folderPath, deleteList);
+			
+			String path = null;
+			String message = null;
+			
+			if (result > 0) {
+				message = "게시글이 수정되었습니다.";
+				path = "../detail/" + boardCode + "/" + detail.getBoardNo() + "?cp=" + cp;
+			} else {
+				message = "게시글 수정 실패";
+				path = req.getHeader("referer");
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+				
+			return "redirect:" + path;
 		}
 		
-		return null;
+			
+	}
+	
+	// 게시글 삭제
+	@GetMapping("/delete/{boardCode}/{boardNo}")
+	public String BoardDelete(@PathVariable("boardCode") int boardCode
+							, @PathVariable("boardNo") int boardNo
+							, RedirectAttributes ra
+							, @RequestHeader("referer") String referer) {
+	
+		int result = service.deleteBoard(boardNo);
+		
+		String message = null;
+		String path = null;
+		
+		if (result > 0) {
+			message = "게시글이 삭제되었습니다.";
+			path = "/board/list/" + boardCode;
+		} else {
+			message = "게시글 삭제 실패";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
 	}
 }

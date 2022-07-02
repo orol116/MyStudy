@@ -162,3 +162,5 @@ SELECT SEQ_IMG_NO.NEXTVAL, A.* FROM (
         '1563'           BOARD_NO
     FROM DUAL
 ) A;
+
+select * from v$version;

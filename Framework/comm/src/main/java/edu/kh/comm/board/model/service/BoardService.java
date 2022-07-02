@@ -44,4 +44,28 @@ public interface BoardService {
 	 */
 	int insertBoard(BoardDetail detail, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
+	/** 게시글 수정 Service
+	 * @param detail
+	 * @param imageList
+	 * @param webPath
+	 * @param folderPath
+	 * @param deleteList
+	 * @throws IOException
+	 * @return result
+	 */
+	int updateBoard(BoardDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
+			String deleteList) throws IOException;
+
+	/** 게시글 삭제 Service
+	 * @param map
+	 * @return result
+	 */
+	int deleteBoard(int boardNo);
+
+	/** 검색 게시글 목록 조회 서비스
+	 * @param paramMap
+	 * @return map
+	 */
+	Map<String, Object> searchBoardList(Map<String, Object> paramMap);
+
 }

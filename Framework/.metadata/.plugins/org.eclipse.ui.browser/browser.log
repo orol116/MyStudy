@@ -78,3 +78,8 @@
 6월 28, 2022 09:24:54.318 [33480:32116:0628/092454.318:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 6월 28, 2022 12:00:55.498 [33480:10856:0628/120055.497:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
 6월 28, 2022 12:00:55.499 [33480:10856:0628/120055.497:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+7월 01, 2022 16:15:28.673 NEW SESSION
+7월 01, 2022 16:15:28.673 [8724:17536:0701/161528.673:ERROR:device_event_log_impl.cc(214)] [16:15:28.673] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 01, 2022 16:15:28.767 [8724:17536:0701/161528.673:ERROR:device_event_log_impl.cc(214)] [16:15:28.676] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 01, 2022 16:16:23.885 [8724:21020:0701/161623.885:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

@@ -145,11 +145,8 @@
             <!-- 동작 구분 -->
             <input type="hidden" name="mode" value="${param.mode}">
 
-            <!-- 게시판 구분 -->
-            <input type="hidden" name="type" value="${param.type}">
-
-            <!-- 게시글 번호 -->
-            <input type="hidden" name="no" value="${param.no}">
+            <!-- 게시글 번호 (커맨드 객체 BoardDetail.boardNo 세팅) -->
+            <input type="hidden" name="boardNo" value="${empty param.no ? 0 : param.no}">
             
             <!-- 현재 페이지 -->
             <input type="hidden" name="cp" value="${param.cp}">
