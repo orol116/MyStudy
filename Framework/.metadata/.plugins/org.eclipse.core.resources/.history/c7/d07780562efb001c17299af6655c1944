@@ -1,0 +1,12 @@
+package edu.kh.comm.board.controller;
+
+import org.springframework.stereotype.Controller;
+
+import edu.kh.comm.board.model.service.ReplyService;
+
+@Controller
+public class ReplyController {
+	
+	private ReplyService service;
+
+}

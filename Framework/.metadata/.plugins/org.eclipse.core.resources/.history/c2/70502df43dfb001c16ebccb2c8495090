@@ -1,0 +1,26 @@
+package edu.kh.comm.board.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import edu.kh.comm.board.model.service.ReplyService;
+
+@Controller
+@RequestMapping("/reply")
+public class ReplyController {
+	
+	@Autowired
+	private ReplyService service;
+	
+	@GetMapping("/selectReplyList")
+	@ResponseBody
+	public String selectReplyList() {
+		
+		
+		
+		return null;
+	}
+}

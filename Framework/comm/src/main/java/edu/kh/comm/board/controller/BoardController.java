@@ -25,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.comm.board.model.service.BoardService;
+import edu.kh.comm.board.model.service.ReplyService;
 import edu.kh.comm.board.model.vo.BoardDetail;
+import edu.kh.comm.board.model.vo.Reply;
 import edu.kh.comm.common.Util;
 import edu.kh.comm.member.model.vo.Member;
 
@@ -36,6 +38,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService service;
+	
+	@Autowired
+	private ReplyService replyService;
 
 	// 게시글 목록 조회
 	
@@ -100,6 +105,13 @@ public class BoardController {
 		
 		
 		if (detail != null) { // 상세 조회 성공 시
+			
+			// 댓글 목록을 조회해서 request scope에 추가
+			List<Reply> rList = replyService.selectReplyList(boardNo);
+			model.addAttribute("rList", rList);
+			
+			// 댓글 삽입
+			
 			
 			int memberNo = 0;
 			Member loginMember = (Member)session.getAttribute("loginMember");

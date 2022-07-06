@@ -1,0 +1,51 @@
+package edu.kh.comm.board.model.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.kh.comm.board.model.dao.ReplyDAO;
+import edu.kh.comm.board.model.vo.Reply;
+import edu.kh.comm.common.Util;
+
+@Service
+public class ReplyServiceImpl implements ReplyService {
+	
+	@Autowired
+	private ReplyDAO dao;
+
+	// ´ñ±Û ¸ñ·Ï Á¶È¸
+	@Override
+	public List<Reply> selectReplyList(int boardNo) {
+		return dao.selectReplyList(boardNo);
+	}
+
+	// ´ñ±Û »ðÀÔ
+	@Override
+	public int insertReply(Reply reply) {
+		
+		// XSS, °³Çà¹®ÀÚ Ã³¸®
+		reply.setReplyContent(Util.XSSHandling(reply.getReplyContent()));
+		reply.setReplyContent(Util.newLineHandling(reply.getReplyContent()));
+
+		return dao.insertReply(reply);
+	}
+
+	// ´ñ±Û »èÁ¦
+	@Override
+	public int deleteReply(int replyNo) {
+		return dao.deleteReply(replyNo);
+	}
+
+	// ´ñ±Û ¼öÁ¤
+	@Override
+	public int updateReply(Reply reply) {
+		
+		reply.setReplyContent((Util.XSSHandling(reply.getReplyContent())));
+		reply.setReplyContent(Util.newLineHandling(reply.getReplyContent()));
+		
+		return dao.updateReply(reply);
+	}
+	
+}
